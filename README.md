@@ -21,3 +21,5 @@ To run the project u need to add .env file and add these following code
 You can get:
 1. Your mongodb uri from your database (website/compass)
 2. Your google client id/secret from your google dev api & services credentials
+
+Then type on terminal(make sure the direction is correct) "npm run start"
