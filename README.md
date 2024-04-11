@@ -10,3 +10,14 @@ Welcome to the ePerpustakaan website, a project created by Triple Trouble for th
 
 ## Website Display:
 Coming soon!
+
+## Project Guide
+To run the project u need to add .env file and add these following code
+1. MONGODB_URI = your_mongodb_uri
+2. GOOGLECLIENTID = your_google_client_id
+3. GOOGLECLIENTSECRET = your_google_client_secret
+4. Change callbackURL on auth.js to your callbackURL from your google dev
+
+You can get:
+1. Your mongodb uri from your database (website/compass)
+2. Your google client id/secret from your google dev api & services credentials
