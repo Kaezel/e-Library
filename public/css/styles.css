@@ -9,7 +9,10 @@ body {
   background-color: rgb(243,243,243);
 }
 
-a { color: var(--bs-dark); }
+a { 
+  color: var(--bs-dark); 
+  font-size: 18px;
+}
 
 
 /* Category Card */
@@ -46,4 +49,45 @@ a { color: var(--bs-dark); }
 
 .my-5 {
   margin-bottom: 0rem !important;
+}
+
+.card-header {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.card-header .cd-left {
+  display: flex;
+  align-items: center;
+  p {
+    margin: 0 0 0 4px;
+  }
+}
+
+.card-header .cd-right form {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 0 4px;
+}
+
+.card-header svg {
+  width: 20px;
+  margin: 0 0 2px 0;
+}
+
+.btnTable {
+  width: 100px;
+}
+
+.main-bottom, .datatable-bottom {
+  display: flex;
+  flex-direction: row; 
+  justify-content: space-between;
+}
+
+.main-bottom ul li a, .datatable-bottom ul li a {
+  color: black;
 }

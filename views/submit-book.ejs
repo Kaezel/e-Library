@@ -7,8 +7,6 @@
 
 <div class="row justify-content-center">
 
-<!-- INI UNTUK NGASI TAU BUKU BARU SUDAH DI ADD ATAU BELUM -->
-
   <% if(infoSubmitObj != '') { %>
     <div class="col-8 alert alert-success" role="alert">
       <%= infoSubmitObj %>
@@ -17,7 +15,7 @@
 
   <% if(infoErrorsObj != '') { %>
     <div class="col-8 alert alert-danger" role="alert">
-      <%= infoErrorsObj[0].message %>
+      <%= infoErrorsObj %>
     </div>
   <% } %>
 
@@ -31,17 +29,18 @@
 
         <div class="col-12">
           <label for="email" class="form-label">Email</label>
-          <input type="email" name="email" id="email" class="form-control" value="<%= email %>" required>
+          <input type="email" name="email" id="email" class="form-control" value="<%= email %>" required placeholder="Enter your email">
         </div>
 
         <div class="col-12">
           <label for="name" class="form-label">Nama Buku</label>
-          <input type="text" name="name" id="name" class="form-control" required>
+          <input type="text" name="name" id="name" class="form-control" required placeholder="Enter book name">
+          <p id="warningMessage" style="color: red; display: none;">The book already exists, contact admin to add a review to the book</p>
         </div>
         
         <div class="col-12">
           <label for="description" class="form-label">Deskripsi Buku</label>
-          <textarea name="description" id="description" class="form-control" required cols="30" rows="4"></textarea>
+          <textarea name="description" id="description" class="form-control" required cols="30" rows="4"placeholder="Enter book description"></textarea>
         </div>
 
         <div class="col-12">
@@ -52,22 +51,23 @@
           <small>         ceritanya bagus.</small>
           <div class="ulasanList">
             <div class="ulasanDiv mb-1">
-              <input type="text" name="ulasan" class="form-control">
+              <input type="text" name="ulasan" class="form-control" placeholder="Enter review">
             </div>
           </div>
         </div>
 
         <div class="col-12">
           <button type="button" class="btn btn-outline-primary" id="addUlasansBtn">+ Ulasan</button>
+          <button type="button" class="btn btn-outline-danger" id="removeUlasansBtn">- Ulasan</button>
         </div>
 
         <div class="col-12">
           <label for="category">Pilih Kategori</label>
           <select class="form-select form-control" required name="category" aria-label="Category">
-            <option selected>Pilih Kategori</option>
-            <option value="Teknologi">Teknologi</option>
-            <option value="Fiksi">Fiksi</option>
-            <option value="Horor">Horor</option>
+            <option selected disabled>Choose Category</option>
+            <% categories.forEach(category => { %>
+              <option value="<%= category.name %>"><%= category.name %></option>
+            <% }) %>
           </select>
         </div>
 
@@ -86,3 +86,20 @@
 
   </div>
 </div>
+
+<script>
+  const bookNameInput = document.getElementById('name');
+  const warningMessage = document.getElementById('warningMessage');
+
+  bookNameInput.addEventListener('input', async () => {
+    const bookName = bookNameInput.value;
+    const response = await fetch(`/check-book?name=${bookName}`);
+    const data = await response.json();
+
+    if (data.exists) {
+      warningMessage.style.display = 'block';
+    } else {
+      warningMessage.style.display = 'none';
+    }
+  });
+</script>

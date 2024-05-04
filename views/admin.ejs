@@ -1,0 +1,183 @@
+    <h1>Welcome to the Admin Dashboard</h1>
+    <% if (message) { %>
+        <div class="alert <%= message.includes('successfully') ? 'alert-success' : 'alert-danger' %>">
+            <%= message %>
+        </div>
+    <% } %>      
+    <div class="card mb-4">
+        <div class="card-header">
+            <div class="cd-left">
+                <svg class="svg-inline--fa fa-table me-1" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="table" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M64 256V160H224v96H64zm0 64H224v96H64V320zm224 96V320H448v96H288zM448 256H288V160H448v96zM64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64z"></path></svg>
+                <% if (page === 'users') { %>
+                    <p>Users Table</p>
+                <% } else if (page === 'books') { %>
+                    <p>Books Table</p>
+                <% } else if (page === 'categories') { %>
+                    <p>Categories Table</p>
+                <% } %>
+            </div>
+            <div class="cd-right">
+                <form method="GET" action="/admin/search">
+                    <% if (page === 'users') { %>
+                        <select name="searchType" class="form-control">
+                            <option value="users" selected>Users</option>
+                            <option value="books">Books</option>
+                            <option value="categories">Categories</option>
+                        </select>
+                    <% } else if (page === 'books') { %>
+                        <select name="searchType" class="form-control">
+                            <option value="books" selected>Books</option>
+                            <option value="users">Users</option>
+                            <option value="categories">Categories</option>
+                        </select>
+                    <% } else if (page === 'categories') { %>
+                        <select name="searchType" class="form-control">
+                            <option value="categories" selected>Categories</option>
+                            <option value="users">Users</option>
+                            <option value="books">Books</option>
+                        </select>
+                    <% } %>
+                    <input type="search" name="searchTerm" class="form-control" placeholder="Search..." aria-label="Search">
+                </form>
+            </div>
+            
+        </div>
+        <div class="card-body">
+            <div class="datatable-wrapper datatable-loading no-footer sortable searchable fixed-columns">
+                <div class="datatable-container">
+                    <% if (page === 'users') { %>
+                        <table class="table table-striped table-dark">
+                            <thead>
+                                <tr>
+                                    <th scope="col">No.</th>
+                                    <th scope="col">Nama User</th>
+                                    <th scope="col">Email</th>
+                                    <th scope="col">Security Question</th>
+                                    <th scope="col">Edit</th>
+                                    <th scope="col">Delete</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% users.forEach((user, index) => { %>
+                                    <tr>
+                                        <th scope="row"><%= index + 1 %></th>
+                                        <td><%= user.name %></td>
+                                        <td><%= user.email %></td>
+                                        <td><%= user.securityQuestion %></td>
+                                        <td class="btnTable">
+                                            <button type="button" class="btn btn-outline-light" onclick="location.href='/users/<%= user._id %>/edit'">Edit</button>
+                                        </td>
+                                        <td class="btnTable">
+                                            <form action="/users/delete/<%= user.id %>" method="POST">
+                                                <button onclick="confirmDelete(event, '/users/delete/<%= user.id %>')" type="submit" class="btn btn-outline-light">Delete</button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                <% }) %>
+                            </tbody>
+                        </table>
+                    <% } else if (page === 'books') { %>
+                        <table class="table table-striped table-dark">
+                            <thead>
+                                <tr>
+                                    <th scope="col">No.</th>
+                                    <th scope="col">Nama Buku</th>
+                                    <th scope="col">Deskripsi</th>
+                                    <th scope="col">Ulasan</th>
+                                    <th scope="col">Kategori</th>
+                                    <th scope="col">Sampul</th>
+                                    <th scope="col">Edit</th>
+                                    <th scope="col">Delete</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% books.forEach((book, index) => { %>
+                                    <tr>
+                                        <th scope="row"><%= index + 1 %></th>
+                                        <td><%= book.name %></td>
+                                        <td><%= book.description %></td>
+                                        <td><%= book.ulasan %></td>
+                                        <td><%= book.category %></td>
+                                        <td>
+                                            <img src="/book/<%= book._id %>/image" alt="<%= book.name %>" loading="lazy" width="100px">
+                                        </td>
+                                        <td class="btnTable">
+                                            <button type="button" class="btn btn-outline-light" onclick="location.href='/books/<%= book._id %>/edit'">Edit</button>
+                                        </td>
+                                        <td class="btnTable">
+                                            <form action="/books/delete/<%= book.id %>" method="POST">
+                                                <button onclick="confirmDelete(event, '/books/delete/<%= book.id %>')" type="submit" class="btn btn-outline-light">Delete</button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                <% }) %>
+                            </tbody>
+                        </table>
+                    <% } else if (page === 'categories') { %>
+                        <div>
+                            <div class="py-2 d-flex justify-content-end">
+                                <button type="submit" class="btn btn-outline-primary" id="addCategoryBtn" onclick="location.href='/add-categories'">+ Category</button>
+                            </div>
+                            <table class="table table-striped table-dark">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">No.</th>
+                                        <th scope="col">Nama Kategori</th>
+                                        <th scope="col">Jumlah Buku</th>
+                                        <th scope="col">Edit</th>
+                                        <th scope="col">Delete</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <% categories.forEach((category, index) => { %>
+                                        <tr>
+                                            <th scope="row"><%= index + 1 %></th>
+                                            <td><%= category.name %></td>
+                                            <td><%= category.bookCountByCategory %></td>
+                                            <td class="btnTable">
+                                                <button type="button" class="btn btn-outline-light" onclick="location.href='/edit-categories/<%= category._id %>/edit'">Edit</button>
+                                            </td>
+                                            <td class="btnTable">
+                                                <form action="/delete-categories/<%= category.id %>" method="POST">
+                                                    <button onclick="confirmDelete(event, '/delete-categories/<%= category.id %>')" type="submit" class="btn btn-outline-light">Delete</button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    <% }) %>
+                                </tbody>
+                            </table>
+                            
+                        </div>
+                    <% } %>
+                </div>
+                <div class="my-4" style="border-top: 1px solid black;">
+                    <div class="my-2 datatable-bottom">
+                        <div class="datatable-info">
+                            Showing <%= lowerBound %> to <%= upperBound %> of <%= dataLength %> datas
+                        </div>
+                        <div class="datatable-pagination">
+                            <nav>
+                                <ul class="pagination justify-content-end">
+                                <li class="page-item <%= currentPage == 1 ? 'disabled' : '' %>">
+                                    <a class="page-link" href="<%= currentPage == 1 ? '#' : '?page=' + (currentPage - 1) %>" aria-label="Previous">
+                                    <span aria-hidden="true">«</span>
+                                    <span class="sr-only"></span>
+                                    </a>
+                                </li>
+                                <% for(let i = 1; i <= totalPages; i++) { %>
+                                    <li class="page-item <%= currentPage == i ? 'disabled' : '' %>"><a class="page-link" href="?page=<%= i %>"><%= i %></a></li>
+                                <% } %>
+                                <li class="page-item <%= currentPage == totalPages ? 'disabled' : '' %>">
+                                    <a class="page-link" href="<%= currentPage == totalPages ? '#' : '?page=' + (currentPage + 1) %>" aria-label="Next">
+                                    <span aria-hidden="true">»</span>
+                                    <span class="sr-only"></span>
+                                    </a>
+                                </li>
+                                </ul>          
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

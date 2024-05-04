@@ -11,4 +11,3 @@ db.once('open', function(){
 require('./Category');
 require('./Book');
 require('./Account');
-require('./auth');

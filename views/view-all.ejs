@@ -5,7 +5,7 @@
     <% book.forEach(function(book, index){ %>
     <a href="/book/<%= book._id %>" class="col text-center category__link">
       <div class="category__img category__img--large shadow">
-        <img src="/uploads/<%= book.image %>" alt="<%= book.name %>" loading="lazy">
+        <img src="/book/<%= book._id %>/image" alt="<%= book.name %>" loading="lazy">
       </div>
       <div class="pt-1"><%= book.name %></div>
     </a>
@@ -13,4 +13,33 @@
   <% } else { %>
     <p>No items found.</p>
   <% } %> 
+</div>
+
+<div class="my-4" style="border-top: 1px solid black;">
+  <div class="my-2 main-bottom">
+    <div class="main-info">
+        Showing <%= lowerBound %> to <%= upperBound %> of <%= dataLength %> books
+    </div>
+    <div class="pagination">
+        <nav>
+          <ul class="pagination justify-content-end">
+            <li class="page-item <%= currentPage == 1 ? 'disabled' : '' %>">
+              <a class="page-link" href="<%= currentPage == 1 ? '#' : '?page=' + (currentPage - 1) %>" aria-label="Previous">
+                <span aria-hidden="true">«</span>
+                <span class="sr-only"></span>
+              </a>
+            </li>
+            <% for(let i = 1; i <= totalPages; i++) { %>
+              <li class="page-item <%= currentPage == i ? 'disabled' : '' %>"><a class="page-link" href="?page=<%= i %>"><%= i %></a></li>
+            <% } %>
+            <li class="page-item <%= currentPage == totalPages ? 'disabled' : '' %>">
+              <a class="page-link" href="<%= currentPage == totalPages ? '#' : '?page=' + (currentPage + 1) %>" aria-label="Next">
+                <span aria-hidden="true">»</span>
+                <span class="sr-only"></span>
+              </a>
+            </li>
+          </ul>          
+        </nav>
+    </div>
+  </div>
 </div>

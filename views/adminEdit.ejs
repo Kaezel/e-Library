@@ -1,0 +1,169 @@
+
+    <% if (page === 'users') { %>
+        <div class="row justify-content-center">
+            <div class="col-8">
+                <div class="py-3 text-center">
+                    <h1 class="display-5 fw-bold">Edit Info User</h1>
+                </div>
+    
+                <form action="/users/<%= user._id %>" enctype="multipart/form-data" method="POST">
+                
+                    <div class="row g-3">
+    
+                        <div class="col-12">
+                            <label for="name" class="form-label">Nama User</label>
+                            <input type="text" name="name" id="name" class="form-control" value="<%= user.name %>">
+                        </div>
+
+                        <div class="col-12">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="text" name="email" id="email" class="form-control" disabled value="<%= user.email %>">
+                        </div>
+
+                        <div class="col-12">
+                            <label for="securityQuestion" class="form-label">Security Question</label>
+                            <input type="text" name="securityQuestion" id="securityQuestion" class="form-control" value="<%= user.securityQuestion %>">
+                        </div>
+
+                        <div class="col-12">
+                            <button type="submit" class="btn btn-primary">Update User</button>
+                        </div>
+    
+                    </div>
+    
+                </form>
+    
+            </div>
+        </div>
+    <% } else if (page === 'books') { %>
+        <div class="row justify-content-center">
+            <div class="col-8">
+                <div class="py-3 text-center">
+                    <h1 class="display-5 fw-bold">Edit Info Buku</h1>
+                </div>
+    
+                <form action="/books/<%= book._id %>" enctype="multipart/form-data" method="POST">
+                
+                    <div class="row g-3">
+    
+                        <div class="col-12">
+                            <label for="name" class="form-label">Nama Buku</label>
+                            <input type="text" name="name" id="name" class="form-control" required value="<%= book.name %>">
+                        </div>
+    
+                        <div class="col-12">
+                            <label for="description" class="form-label">Deskripsi Buku</label>
+                            <textarea name="description" id="description" class="form-control" required cols="30" rows="4"><%= book.description %></textarea>
+                        </div>
+    
+                        <div class="col-12">
+                            <label for="name" class="form-label">Ulasan Buku</label><br>
+                            <div class="ulasanList">
+                                <% book.ulasan.forEach(function(ulasan) { %>
+                                    <div class="ulasanDiv mb-1">
+                                        <input type="text" name="ulasan" required value="<%= ulasan %>" class="form-control">
+                                    </div>
+                                <% }); %>
+                            </div>
+                        </div>            
+    
+                        <div class="col-12">
+                            <button type="button" class="btn btn-outline-primary" id="addUlasansBtn">+ Ulasan</button>
+                            <button type="button" class="btn btn-outline-danger" id="removeUlasansBtn">- Ulasan</button>
+                        </div>
+    
+                        <div class="col-12">
+                            <label for="category">Kategori Buku</label>
+                            <select id="categorySelect" class="form-select form-control" required name="category" aria-label="Category">
+                                <option selected disabled><%= book.category %></option>
+                                <option value="Teknologi">Teknologi</option>
+                                <option value="Fiksi">Fiksi</option>
+                                <option value="Horor">Horor</option>
+                            </select>
+                        </div>
+    
+                        <div class="col-12">
+                            <label for="image">Sampul Buku</label>
+                            <div class="py-3">
+                                <img src="/book/<%= book._id %>/image" alt="<%= book.name %>" loading="lazy" width="100px">
+                            </div>
+                            <input type="file" class="form-control" name="image" accept="image/*">
+                        </div>
+    
+                        <div class="col-12">
+                            <button type="submit" class="btn btn-primary">Update Buku</button>
+                        </div>
+    
+                    </div>
+    
+                </form>
+    
+            </div>
+        </div>
+    <% } else if (page === 'categories') { %>
+        <div class="row justify-content-center">
+            <div class="col-8">
+                <div class="py-3 text-center">
+                    <h1 class="display-5 fw-bold">Edit Buku</h1>
+                </div>
+    
+                <form action="/edit-categories/<%= category._id %>" enctype="multipart/form-data" method="POST">
+                
+                    <div class="row g-3">
+    
+                        <div class="col-12">
+                            <label for="name" class="form-label">Nama Kategori</label>
+                            <input type="text" name="name" id="name" class="form-control" required value="<%= category.name %>">
+                        </div>
+
+                        <div class="col-12">
+                            <button type="submit" class="btn btn-primary">Update Kategori</button>
+                        </div>
+    
+                    </div>
+    
+                </form>
+    
+            </div>
+        </div>
+    <% } else if (page === 'addCategory') { %>
+        <div class="row justify-content-center">
+            <div class="col-8">
+                <div class="py-3 text-center">
+                    <h1 class="display-5 fw-bold">Add Category</h1>
+                </div>
+    
+                <form action="/add-categories" enctype="multipart/form-data" method="POST">
+                
+                    <div class="row g-3">
+    
+                        <div class="col-12">
+                            <label for="name" class="form-label">Nama Category</label>
+                            <input type="text" name="name" id="name" class="form-control" required>
+                        </div>
+
+                        <div class="col-12">
+                            <button type="submit" class="btn btn-primary">Add Category</button>
+                        </div>
+    
+                    </div>
+    
+                </form>
+    
+            </div>
+        </div>
+    <% } %>
+
+    <script>
+        window.onload = function() {
+            let selectElement = document.getElementById('categorySelect');
+            let selectedOption = selectElement.querySelector('option[selected]');
+            let options = Array.from(selectElement.querySelectorAll('option'));
+
+            options.forEach(function(option) {
+                if (option.value === selectedOption.value && !option.selected) {
+                    selectElement.removeChild(option);
+                }
+            });
+        };
+    </script>

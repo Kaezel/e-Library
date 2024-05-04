@@ -1,17 +1,9 @@
 <% if(book != null ) { %>
 
-  <nav aria-label="breadcrumb">
-    <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a href="/index">Home</a></li>
-      <li class="breadcrumb-item active" aria-current="page"><%- book.name %></li>
-    </ol>
-  </nav>
-
-
   <div class="row">
 
     <div class="col-12 col-md-4">
-      <img src="/uploads/<%- book.image %>" class="img-fluid sticky-top" style="top: 20px;" alt="<%- book.name %>" loading="lazy">
+      <img src="/book/<%= book._id %>/image" class="img-fluid sticky-top" style="top: 20px;" alt="<%- book.name %>" loading="lazy">
     </div>
 
     <div class="col-12 col-md-8">

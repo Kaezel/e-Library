@@ -4,17 +4,21 @@ const mongoose = require('mongoose');
 const Loginschema = new mongoose.Schema({
     name: {
         type:String,
-        required: true
+        required: false
     },
     email: {
         type: String,
-        required: true,
-        unique: true // Ensures unique email addresses
+        required: 'This field is required.',
+        unique: true
     },
     password: {
         type: String,
-        required: true
-    }
+        required: false
+    },
+    securityQuestion: {
+        type:String,
+        required: false
+    },
 });
 
 // collection part

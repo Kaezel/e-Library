@@ -5,7 +5,7 @@
     <% book.forEach(function(book, index){ %>
     <a href="/book/<%= book._id %>" class="col text-center category__link">
       <div class="category__img category__img--large shadow">
-        <img src="/uploads/<%= book.image %>" alt="<%= book.name %>" loading="lazy">
+        <img src="/book/<%= book._id %>/image" alt="<%= book.name %>" loading="lazy">
       </div>
       <div class="pt-1"><%= book.name %></div>
     </a>

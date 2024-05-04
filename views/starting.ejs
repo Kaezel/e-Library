@@ -1,13 +1,10 @@
-<%- include('./layouts/startingPage.ejs') %>
-<body>
 
     <div class="form-container">
         <div class="cont">
-            <h2>Welcome to ePerpustakaan</h2>
-            <p>If u have an account already please do login first</p>
+            <img src="/img/logo.png" alt="e-LibraryLogo" width="100%" style="display:flex; justify-content: center; align-items: center;">
             <form action="/login" method="get">
                 <button type="submit" class="login-btn">Login with email</button>
-            </form>         
+            </form>
             <p>Or</p>
             <div class="imgCont">
                 <a href="/auth/google"><img class="google-logo" src="img/google-logo.png" alt="Login with Google"></a>
@@ -15,6 +12,3 @@
             <p class="login">Don't have an account? <a class="link" href="/signup">SignUp</a></p>
         </div>
     </div>
-    
-</body>
-</html> 

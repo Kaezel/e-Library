@@ -1,0 +1,82 @@
+[{
+  "_id": {
+    "$oid": "66268ec41637bd5457c259d7"
+  },
+  "email": "admin@elibrary.com",
+  "password": "$2b$10$IDYcKT9fnrZakmfah18X1O6IiK9BKUKe48Q/tlGi.vnbzeD1oGrOy",
+  "securityQuestion": "ADMIN123",
+  "__v": 0,
+  "name": ""
+},
+{
+  "_id": {
+    "$oid": "66279cdb7c615b681a6610a9"
+  },
+  "email": "timoty@gmail.com",
+  "password": "$2b$10$6iIIDIBzk.F2kxYqa/ED5OX7QwaFDCAc7Z51njMuwrPFR0xKqZa2y",
+  "securityQuestion": "kari",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66279ce57c615b681a6610ac"
+  },
+  "email": "jafier@gmail.com",
+  "password": "$2b$10$ZpkRwLh1BFaXb88rHcZQk.Rrf3Tl0c8/sRXBGGQypSocBR.xYRMTe",
+  "securityQuestion": "rendang",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66279cfd7c615b681a6610af"
+  },
+  "email": "richard@gmail.com",
+  "password": "$2b$10$DSlrlUsVHs3L0mqZh7HSM.veb6b9Iu4Zihy.7dHLVXXUpB5Kt0TbS",
+  "securityQuestion": "goreng aceh",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "662902634e980ef412ce908f"
+  },
+  "name": "Ace Zzz",
+  "email": "zzzace6@gmail.com",
+  "__v": 0,
+  "securityQuestion": ""
+},
+{
+  "_id": {
+    "$oid": "6630eaa124c6d1f984448896"
+  },
+  "email": "aaaaaaaaa@gmail.com",
+  "password": "$2b$10$X9otJT5tp6FpH.mASCaB7OAyGta8nx//yIeCM5tGQNFu8An3oY8pC",
+  "securityQuestion": "indomi",
+  "__v": 0,
+  "name": ""
+},
+{
+  "_id": {
+    "$oid": "66343df4d7f8d0eb82332f09"
+  },
+  "name": "Richard Christian",
+  "email": "richardchrs.02@gmail.com",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6635f1ac5388b24f5f01eb98"
+  },
+  "name": "DPM FTI",
+  "email": "dpmftibackup@gmail.com",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6635fa307886f2253ef8f167"
+  },
+  "email": "test123@gmail.com",
+  "password": "$2b$10$b0XZ6KeFeYZG5mpRmG6lBO1MRavlGdNWeJOXK0uKRsh.QpZA2XyzC",
+  "securityQuestion": "test123",
+  "__v": 0,
+  "name": "test"
+}]

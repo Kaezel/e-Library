@@ -19,12 +19,11 @@ const bookSchema = new mongoose.Schema({
   },
   category: {
     type: String,
-    enum: ['Teknologi', 'Fiksi', 'Horor'],
     required: 'This field is required.'
   },
   image: {
-    type: String,
-    required: 'This field is required.'
+    data: Buffer,
+    contentType: String
   },
 });
 

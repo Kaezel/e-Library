@@ -1,0 +1,79 @@
+body {
+    background-image: url('path/to/your/image.jpg');
+    background-color: rgb(243,243,243);
+}
+
+header {
+    background-color: transparent;
+}
+
+nav ul li a {
+    color: #fff; /* Adjusted link color for visibility on dark background */
+}
+
+.container {
+  background-size: cover;
+  background-position: center;
+  /* color: #fff; */
+  text-align: center;
+  padding: 25px 0;
+}
+
+
+.hero img {
+  width: 100%;
+  height: 500px;
+  margin-bottom: 40px;
+}
+
+.hero h2,
+.hero p {
+    color: #31363F; /* Change the text color to black */
+}
+
+.btn {
+  background-color: #222831;
+  color: #fff; 
+  padding: 10px 20px;
+  text-decoration: none;
+  border: none;
+  border-radius: 15px;
+}
+
+.btn:hover {
+  background-color: #525252;
+}
+
+.card-container {
+  display: flex;
+  justify-content: space-around; /* Adjust as needed */
+}
+
+.card {
+  flex: 1; /* Distribute space evenly among the cards */
+  margin: 0 10px; /* Adjust spacing between cards */
+  padding: 20px;
+  background-color: #f0f0f0; /* Add background color for better visibility */
+  border-radius: 10px; /* Add border radius for rounded corners */
+  box-shadow: 0px 3px 6px rgba(0,0,0,.16); /* Add initial shadow effect */
+  text-align: center;
+  transition: transform 0.3s, box-shadow 0.3s; /* Add transition for smooth effect */
+}
+
+.card img {
+  width: 100%; /* Set the width to fill the container */
+  height: 300px; /* Set a specific height for the image */
+  object-fit: cover; /* Ensure the image covers the entire container */
+  border-radius: 8px; /* Add border radius for rounded corners */
+  margin-bottom: 10px;
+}
+
+.card:hover {
+  transform: translateY(-5px); /* Lift up on hover */
+  box-shadow: 0px 6px 12px rgba(0,0,0,.3); /* Add shadow on hover */
+}
+
+footer {
+    background-color: transparent;
+    color: #333; /* Adjusted text color for visibility on light background */
+}

@@ -7,72 +7,26 @@
   </ol>
 </nav>
 
-<!-- BUKU TEKNOLOGI -->
-<section id="topSectionCategory" class="pb-4 pt-4">
-  <div class="d-flex mb-2 align-items-center">
-    <h2>Buku Teknologi</h2>
-    <a href="/categories/Teknologi" class="ms-auto">View More</a>
-  </div>
+<% Object.keys(cat).forEach(function(category) { %>
+  <section class="pb-4 pt-4">
+    <div class="d-flex mb-2 align-items-center">
+      <h2>Buku <%= category %></h2>
+      <a href="/categories/<%= category %>" class="ms-auto">View More</a>
+    </div>
 
-  <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
-    <% if(typeof cat.Teknologi !== 'undefined' && cat.Teknologi.length > 0) { %>
-      <% cat.Teknologi.forEach(function(book, index){ %>
-      <a href="/book/<%= book._id %>" class="col text-center category__link">
-        <div class="category__img category__img--large shadow">
-          <img src="/uploads/<%= book.image %>" alt="<%= book.name %>" loading="lazy">
-        </div>
-        <div class="pt-1"><%= book.name %></div>
-      </a>
-      <% }) %>
-    <% } else { %>
-      <p>No books found.</p>
-    <% } %>
-  </div>
-</section>
-
-<!-- BUKU FIKSI -->
-<section class="pb-4 pt-4">
-  <div class="d-flex mb-2 align-items-center">
-    <h2>Buku Fiksi</h2>
-    <a href="/categories/Fiksi" class="ms-auto">View More</a>
-  </div>
-
-  <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
-    <% if(cat.Fiksi != '') { %>
-      <% cat.Fiksi.forEach(function(book, index){ %>
-      <a href="/book/<%= book._id %>" class="col text-center category__link">
-        <div class="category__img category__img--large shadow">
-          <img src="/uploads/<%= book.image %>" alt="<%= book.name %>" loading="lazy">
-        </div>
-        <div class="pt-1"><%= book.name %></div>
-      </a>
-      <% }) %>
-    <% } else { %>
-      <p>No books found.</p>
-    <% } %>
-  </div>
-</section>
-
-<!-- Horor Books -->
-<section class="pb-4 pt-4">
-  <div class="d-flex mb-2 align-items-center">
-    <h2>Buku Horor</h2>
-    <a href="/categories/Horor" class="ms-auto">View More</a>
-  </div>
-
-  <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
-    <% if(cat.Horor != '') { %>
-      <% cat.Horor.forEach(function(book, index){ %>
-      <a href="/book/<%= book._id %>" class="col text-center category__link">
-        <div class="category__img category__img--large shadow">
-          <img src="/uploads/<%= book.image %>" alt="<%= book.name %>" loading="lazy">
-        </div>
-        <div class="pt-1"><%= book.name %></div>
-      </a>
-      <% }) %>
-    <% } else { %>
-      <p>No books found.</p>
-    <% } %>
-  </div>
-</section>
-<!-- Horor End -->
+    <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
+      <% if(cat[category] != '') { %>
+        <% cat[category].forEach(function(book, index){ %>
+        <a href="/book/<%= book._id %>" class="col text-center category__link">
+          <div class="category__img category__img--large shadow">
+            <img src="/book/<%= book._id %>/image" alt="<%= book.name %>" loading="lazy">
+          </div>
+          <div class="pt-1"><%= book.name %></div>
+        </a>
+        <% }) %>
+      <% } else { %>
+        <p>No books found.</p>
+      <% } %>
+    </div>
+  </section>
+<% }) %>
