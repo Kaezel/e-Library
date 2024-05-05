@@ -29,7 +29,7 @@ From commenting/deleting those code will disabled feature Login via Google
 Then type on terminal(make sure the direction is correct) "npm run start"
 
 ## Link Demo Program Video
-[(link)](https://youtu.be/gQwuzwXzXxY)
+link: https://youtu.be/gQwuzwXzXxY
 
 
 ## Pengantar (Indonesia)
@@ -47,6 +47,7 @@ Untuk menjalankan proyek, Anda perlu menambahkan file .env dan menambahkan kode-
 1. MONGODB_URI = uri_mongodb_anda
 2. GOOGLECLIENTID = id_klien_google_anda
 3. GOOGLECLIENTSECRET = rahasia_klien_google_anda
+
 Setelah menambahkan kode tersebut, sekarang Anda harus mengubah callbackURL pada auth.js ke callbackURL Anda dari pengembang Google Anda
 
 Anda dapat mendapatkan:
@@ -57,9 +58,10 @@ Atau jika Anda ingin menjalankan proyek tanpa fitur Login melalui Google, Anda d
 
 1. Pada authController.js, komentari/hapus dari baris 122-179
 2. Pada authRoutes.js, komentari/hapus dari baris 20-24
+
 Dengan mengomentari/menghapus kode-kode tersebut akan menonaktifkan fitur Login melalui Google
 
 Kemudian ketik di terminal (pastikan arahannya benar) "npm run start"
 
 ## Link Video Demo Program
-[(link)](https://youtu.be/gQwuzwXzXxY)
+link: https://youtu.be/gQwuzwXzXxY
