@@ -8,9 +8,6 @@ Welcome to the ePerpustakaan website, a project created by Triple Trouble for th
 - Timothy Wahyudi Pakpahan (535220043)
 - Richard Christian (535220018)
 
-## Website Display:
-Coming soon!
-
 ## Project Guide
 To run the project u need to add .env file and add these following code:
 1. MONGODB_URI = your_mongodb_uri
@@ -32,7 +29,7 @@ From commenting/deleting those code will disabled feature Login via Google
 Then type on terminal(make sure the direction is correct) "npm run start"
 
 ## Link Demo Program Video
-(link)
+[(link)](https://youtu.be/gQwuzwXzXxY)
 
 
 ## Pengantar (Indonesia)
@@ -43,9 +40,6 @@ Selamat datang di situs web e-Library, sebuah proyek yang dibuat oleh Triple Tro
 - Jafier Andreas (535220013)
 - Timothy Wahyudi Pakpahan (535220043)
 - Richard Christian (535220018)
-
-## Tampilan Situs Web
-
 
 ## Panduan Proyek
 Untuk menjalankan proyek, Anda perlu menambahkan file .env dan menambahkan kode-kode berikut:
@@ -68,4 +62,4 @@ Dengan mengomentari/menghapus kode-kode tersebut akan menonaktifkan fitur Login 
 Kemudian ketik di terminal (pastikan arahannya benar) "npm run start"
 
 ## Link Video Demo Program
-(link)
+[(link)](https://youtu.be/gQwuzwXzXxY)
